@@ -1,0 +1,135 @@
+server: 
+  port: 8080
+
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+         
+spring:
+  servlet:    
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  application:
+    name: uniovi-avib-morphingprojections-gateway 
+  cloud:
+    gateway:      
+      routes:
+        - id: BACKEND_USER
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/users/**
+                              
+        - id: BACKEND_ORGANIZATION
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/organizations/**
+            
+        - id: BACKEND_PROJECT
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/projects/**
+                       
+        - id: BACKEND_CASE
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/cases/**
+
+        - id: BACKEND_ANNOTATION
+          uri: http://localhost:8081 
+          predicates: 
+            - Path=/annotations/**
+                        
+        - id: BACKEND_IMAGE
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/images/**
+            
+        - id: BACKEND_RESOURCE
+          uri: http://localhost:8082 
+          predicates: 
+            - Path=/resources/**
+                                    
+        - id: BACKEND_PROJECTION
+          uri: http://localhost:8083 
+          predicates: 
+            - Path=/projections/**
+                        
+        - id: BACKEND_JOB
+          uri: http://localhost:8084 
+          predicates: 
+            - Path=/jobs/**
+                                                  
+        - id: BACKEND_ANALYTICS
+          uri: http://localhost:5000 
+          predicates: 
+            - Path=/analytics/**
+---
+
+server:
+  port: 8080
+  
+spring:
+  config:
+    activate:
+      on-profile: avib
+  servlet:    
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  application:
+    name: uniovi-avib-morphingprojections-gateway 
+  cloud:
+    gateway:      
+      routes:
+        - id: BACKEND_USER
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/users/**
+                              
+        - id: BACKEND_ORGANIZATION
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/organizations/**
+            
+        - id: BACKEND_PROJECT
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/projects/**
+                       
+        - id: BACKEND_CASE
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/cases/**
+
+        - id: BACKEND_ANNOTATION
+          uri: http://uniovi-avib-morphingprojections-backend-annotation 
+          predicates: 
+            - Path=/annotations/**
+                        
+        - id: BACKEND_IMAGE
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/images/**
+            
+        - id: BACKEND_RESOURCE
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/resources/**
+                                    
+        - id: BACKEND_PROJECTION
+          uri: http://uniovi-avib-morphingprojections-backend-storage 
+          predicates: 
+            - Path=/projections/**
+                        
+        - id: BACKEND_JOB
+          uri: http://uniovi-avib-morphingprojections-backend-organization 
+          predicates: 
+            - Path=/jobs/**
+                                                  
+        - id: BACKEND_ANALYTICS
+          uri: uniovi-avib-morphingprojections-backend-analytics 
+          predicates: 
+            - Path=/analytics/**       
