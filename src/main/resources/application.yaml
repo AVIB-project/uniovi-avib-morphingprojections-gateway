@@ -16,12 +16,15 @@ spring:
     name: uniovi-avib-morphingprojections-gateway
   cloud:
     gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
-        add-to-simple-url-handler-mapping: true
         cors-configurations:
           '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
+            allowed-origins: "http://localhost:4200"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
       routes:
         - id: BACKEND_USER
           uri: http://localhost:8082
@@ -63,9 +66,7 @@ spring:
           uri: http://localhost:5000
           predicates:
             - Path=/analytics/**
-
 ---
-
 server:
   port: 8080
 
@@ -87,12 +88,15 @@ spring:
     name: uniovi-avib-morphingprojections-gateway
   cloud:
     gateway:
+      default-filters:
+      - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
       globalcors:
         cors-configurations:
           '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
-            allowCredentials: false
+            allowed-origins: "https://avispe.edv.uniovi.es"
+            allowed-methods: "*"
+            allowed-headers: "*"
+            allow-credentials: true
       routes:
         - id: BACKEND_USER
           uri: http://uniovi-avib-morphingprojections-backend-organization
