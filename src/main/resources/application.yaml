@@ -10,8 +10,8 @@ management:
 spring:
   servlet:
     multipart:
-      max-file-size: 500MB
-      max-request-size: 500MB
+      max-file-size: 3GB
+      max-request-size: 3GB
   application:
     name: uniovi-avib-morphingprojections-gateway
   cloud:
@@ -82,8 +82,8 @@ spring:
       on-profile: avib
   servlet:
     multipart:
-      max-file-size: 500MB
-      max-request-size: 500MB
+      max-file-size: 3GB
+      max-request-size: 3GB
   application:
     name: uniovi-avib-morphingprojections-gateway
   cloud:
