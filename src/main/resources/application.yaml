@@ -1,19 +1,11 @@
 server: 
   port: 8080
 
-management:
-  endpoint:
-    health:
-      probes:
-        enabled: true
-
 spring:
   servlet:
     multipart:
       max-file-size: 3GB
       max-request-size: 3GB
-  application:
-    name: uniovi-avib-morphingprojections-gateway
   cloud:
     gateway:
       default-filters:
@@ -70,12 +62,6 @@ spring:
 server:
   port: 8080
 
-management:
-  endpoint:
-    health:
-      probes:
-        enabled: true
-
 spring:
   config:
     activate:
@@ -84,8 +70,6 @@ spring:
     multipart:
       max-file-size: 3GB
       max-request-size: 3GB
-  application:
-    name: uniovi-avib-morphingprojections-gateway
   cloud:
     gateway:
       default-filters:
@@ -99,42 +83,42 @@ spring:
             allow-credentials: true
       routes:
         - id: BACKEND_USER
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/users/**
         - id: BACKEND_ORGANIZATION
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/organizations/**
         - id: BACKEND_PROJECT
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/projects/**
         - id: BACKEND_CASE
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/cases/**
         - id: BACKEND_ANNOTATION
-          uri: http://uniovi-avib-morphingprojections-backend-annotation
+          uri: http://avib-backend-annotation
           predicates:
             - Path=/annotations/**
         - id: BACKEND_IMAGE
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/images/**
         - id: BACKEND_RESOURCE
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/resources/**
         - id: BACKEND_PROJECTION
-          uri: http://uniovi-avib-morphingprojections-backend-storage
+          uri: http://avib-backend-storage
           predicates:
             - Path=/projections/**
         - id: BACKEND_JOB
-          uri: http://uniovi-avib-morphingprojections-backend-organization
+          uri: http://avib-backend-organization
           predicates:
             - Path=/jobs/**
         - id: BACKEND_ANALYTICS
-          uri: uniovi-avib-morphingprojections-backend-analytics
+          uri: http://avib-backend-analytics
           predicates:
             - Path=/analytics/**
