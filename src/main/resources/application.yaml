@@ -83,42 +83,42 @@ spring:
             allow-credentials: true
       routes:
         - id: BACKEND_USER
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/users/**
         - id: BACKEND_ORGANIZATION
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/organizations/**
         - id: BACKEND_PROJECT
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/projects/**
         - id: BACKEND_CASE
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/cases/**
         - id: BACKEND_ANNOTATION
-          uri: http://avib-backend-annotation
+          uri: http://avib-backend-annotation:8081
           predicates:
             - Path=/annotations/**
         - id: BACKEND_IMAGE
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/images/**
         - id: BACKEND_RESOURCE
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/resources/**
         - id: BACKEND_PROJECTION
-          uri: http://avib-backend-storage
+          uri: http://avib-backend-storage:8083
           predicates:
             - Path=/projections/**
         - id: BACKEND_JOB
-          uri: http://avib-backend-organization
+          uri: http://avib-backend-organization:8082
           predicates:
             - Path=/jobs/**
         - id: BACKEND_ANALYTICS
-          uri: http://avib-backend-analytics
+          uri: http://avib-backend-analytics:5000
           predicates:
             - Path=/analytics/**
