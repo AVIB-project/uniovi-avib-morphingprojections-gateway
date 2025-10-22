@@ -121,4 +121,4 @@ spring:
         - id: BACKEND_ANALYTICS
           uri: http://avib-backend-analytics:5000
           predicates:
-            - Path=/api/analytics/**
+            - Path=/analytics/**
